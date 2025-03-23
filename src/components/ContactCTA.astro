@@ -1,0 +1,33 @@
+---
+import CallToAction from "./CallToAction.astro";
+import Icon from "./Icon.astro";
+---
+
+<aside>
+	<CallToAction href="mailto:lucasrderr@gmail.com">
+		Send Me an Email
+		<Icon icon="paper-plane-tilt" size="1.2em" />
+	</CallToAction>
+</aside>
+
+<style>
+	aside {
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Center horizontally */
+		justify-content: center; /* Center vertically */
+		gap: 1rem;
+		
+		padding: 1rem;
+		background-color: var(--gray-999_40);
+		box-shadow: none;
+	}
+
+	h2 {
+		font-size: var(--text-xl);
+		text-align: center;
+		max-width: 15ch;
+	}
+
+
+</style>

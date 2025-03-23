@@ -1,0 +1,49 @@
+---
+// Learn about using Astro layouts:
+// https://docs.astro.build/en/core-concepts/layouts/
+
+// Component Imports
+import MainHead from '../components/MainHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string | undefined;
+	description?: string | undefined;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<MainHead title={title} description={description} />
+	</head>
+	<body>
+		<div class="stack">
+			<Nav />
+			<slot />
+			<Footer />
+		</div>
+
+		<script>
+			// Add “loaded” class once the document has completely loaded.
+			addEventListener('load', () => document.documentElement.classList.add('loaded'));
+		</script>
+
+		<style>
+			body {
+				background-color: black;
+				margin: 0; /* Remove default margin */
+				padding: 0; /* Remove default padding */
+				min-height: 100vh; /* Ensure the background covers the full viewport height */
+			}
+
+			.stack {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh; /* Ensure the stack covers the full viewport height */
+			}
+		</style>
+	</body>
+</html>

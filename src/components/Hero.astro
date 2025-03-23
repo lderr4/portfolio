@@ -1,0 +1,87 @@
+---
+interface Props {
+	title: string;
+	tagline?: string;
+	align?: 'start' | 'center';
+}
+
+const { align = 'center', tagline, title } = Astro.props;
+---
+
+<div class:list={['stack-2 gap-2', align]}>
+	<div class="stack-2 gap-2">
+		<h1 class="title">{title}</h1>
+		{tagline && <p class="tagline">{tagline}</p>}
+	</div>
+	<slot />
+</div>
+
+<style>
+	.hero {
+    display: flex;                /* Use flexbox for easy alignment */
+    flex-direction: column;       /* Stack elements vertically */
+    justify-content: flex-start;  /* Align content to the top */
+    align-items: center;          /* Center content horizontally */
+    padding: 100px;                /* Add padding around the content */
+    text-align: center;           /* Default text alignment */
+}
+
+/* Container for text elements (title and tagline) */
+.text-container {
+    display: flex;
+    flex-direction: column;       /* Stack title and tagline vertically */
+    align-items: center;          /* Center text horizontally */
+    gap: 1rem;                    /* Add spacing between title and tagline */
+}
+
+/* Styling for the title */
+.title {
+    font-size: var(--text-4xl);    /* Default font size */
+    font-weight: bold;             /* Make the title bold */
+    color: var(--gray-0);          /* Set the text color */
+    max-width: 40ch;               /* Limit title width to prevent long lines */
+    margin: 0;                     /* Remove default margin */
+}
+
+/* Styling for the tagline */
+.tagline {
+    font-size: var(--text-lg);     /* Set the tagline size */
+    color: rgb(206, 206, 206);    /* Set color for the tagline */
+    /* max-width: 37ch;               Limit width for readability */
+    margin-top: 0.5rem;            /* Add spacing from the title */
+}
+
+/* Media query for larger screens */
+@media (min-width: 50em) {
+    .hero {
+        font-size: var(--text-xl);  /* Increase base font size for larger screens */
+        align-items: flex-start;    /* Align items to the left for larger screens */
+        text-align: start;          /* Change text alignment to start (left) */
+        padding: 40px;              /* Increase padding for larger screens */
+    }
+
+    .title {
+        font-size: var(--text-5xl); /* Increase title font size */
+        max-width: 50ch;            /* Allow more space for the title */
+    }
+
+    .tagline {
+        font-size: var(--text-lg);  /* Keep tagline size the same or adjust for readability */
+    }
+}
+
+/* Add some responsive improvements */
+@media (max-width: 40em) {
+    .hero {
+        padding: 15px;             /* Reduce padding on smaller screens */
+    }
+
+    .title {
+        font-size: var(--text-3xl); /* Smaller font size for smaller screens */
+    }
+
+    .tagline {
+        font-size: var(--text-sm);  /* Smaller tagline text on mobile */
+    }
+}
+</style>

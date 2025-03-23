@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<BaseLayout
+	title="About | Lucas Derr"
+	description="About Jeanine White Lorem Ipsum"
+>
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+			>
+				<img
+					width="1553"
+					height="873"
+					src="/assets/at-work.jpg"
+					alt="Lucas Derr at work with a colleague"
+				/>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						My name is Lucas Derr, and I hold a Bachelor’s in
+						Computer Science (May 2023) and a Master’s in Data
+						Science (May 2024) from CU Boulder. Throughout my
+						education, I developed a strong passion for working with
+						data and its ability to drive smarter, more efficient
+						solutions.
+					</p>
+					<p>
+						I have gained hands-on experience during internships at
+						two startups—one as a data scientist building machine
+						learning models for insurance claims, and another as a
+						full-stack developer at a Dutch consultancy. I have an
+						unyielding passion for building efficient, useful, and
+						innovative software, and plan to spend my career
+						continuing to do so.
+					</p>
+					<p>
+
+					</p>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="section-title">Interests</h2>
+				<div class="content">
+					<p>
+						<p>
+							<strong>Basketball:</strong> 
+						</p>
+						<p>
+							<strong>Skiing:</strong> 
+						</p>
+						<p>
+							<strong>Chess:</strong> 
+						</p>
+						<p>
+							<strong>Bass:</strong> 
+						</p>
+						<p>
+							<strong>Cooking:</strong> 
+						</p>
+						
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		/* grid-column: 2 / 4; */
+		padding: 0 1rem; /* Add horizontal padding */
+		max-width: 800px; /* Optional: set a max width to prevent stretching */
+		margin: 0 auto; /* Optional: center the content */
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
