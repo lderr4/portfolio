@@ -3,7 +3,9 @@ interface Props {
 	title: string;
 	tagline?: string;
 	align?: 'start' | 'center';
+    class?: string;
 }
+console.log(Astro.props)
 
 const { align = 'center', tagline, title } = Astro.props;
 ---
@@ -12,7 +14,7 @@ const { align = 'center', tagline, title } = Astro.props;
 	<div class="stack-2 gap-2">
 		<h1 class="title">{title}</h1>
 		{tagline && <p class="tagline">{tagline}</p>}
-	</div>
+    </div>
 	<slot />
 </div>
 
@@ -38,9 +40,15 @@ const { align = 'center', tagline, title } = Astro.props;
 .title {
     font-size: var(--text-4xl);    /* Default font size */
     font-weight: bold;             /* Make the title bold */
-    color: var(--gray-0);          /* Set the text color */
     max-width: 40ch;               /* Limit title width to prevent long lines */
     margin: 0;                     /* Remove default margin */
+}
+
+.hero.small-title .title {
+    font-size: var(--text-sm); 
+    font-weight: bold;             
+    max-width: 40ch;              
+    margin: 0; 
 }
 
 /* Styling for the tagline */
@@ -64,6 +72,7 @@ const { align = 'center', tagline, title } = Astro.props;
         font-size: var(--text-5xl); /* Increase title font size */
         max-width: 50ch;            /* Allow more space for the title */
     }
+    
 
     .tagline {
         font-size: var(--text-lg);  /* Keep tagline size the same or adjust for readability */
@@ -79,6 +88,7 @@ const { align = 'center', tagline, title } = Astro.props;
     .title {
         font-size: var(--text-3xl); /* Smaller font size for smaller screens */
     }
+    
 
     .tagline {
         font-size: var(--text-sm);  /* Smaller tagline text on mobile */

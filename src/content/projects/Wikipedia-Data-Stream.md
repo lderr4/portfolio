@@ -1,6 +1,6 @@
 ---
 title: Wikipedia-Data-Stream
-publishDate: 2019-10-02 00:00:00
+publishDate: 2025-01-02 00:00:00
 img: /assets/projects/data-stream.png
 img_alt: Data Stream Architecture
 description: |
@@ -36,26 +36,26 @@ In this project, I use the [Wikipedia Clickstream Data Dump](https://dumps.wikim
    make run
    ```
    The UI should look like this:
-   ![flink ui screenshot](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/flinkui.png)
+   ![flink ui screenshot](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/flinkui.png?raw=true)
  
 5. To confirm the entire system is working correctly, use this command to check the number of rows in the users and clicks tables:
    ```
    make count-rows
    ```
    The users table should have 5000 entries; the clicks table should be getting continually populated.
-   ![count rows command](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/countrows.png)
+   ![count rows command](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/countrows.png?raw=true)
 6. Optionally, you can run this command to start up metabase.
    ```
    make Metabase
    ```
 ### Architecture Diagram
-![Architecture Diagram](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/architecture.png)
+![Architecture Diagram](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/architecture.png?raw=true)
 ##### Python Data Source
 Simulate a data source by producing fake click data and sending it to the kafka topic. The data is taken from the Wikipedia Clickstream data dump and simulates realistic click probabilities. Additionally, the fake user API is used to generate a fake user table with 5000 rows. Each click is given a random user from the user table.
 ##### Apache Kafka
 Apache Kafka serves as a message broker with its log-based queueing system, capable of handling high throughput data streams. The clicks data is sent to the clicks topic.
 ##### Apache Flink
-Apache Flink is responsible for processing the data sent to the Kafka topic and inserting into the PostgreSQL database. A Kafka source and a JDBC PostgreSQL sink are set up with their respective Jar connectors, allowing Flink to interact with the Kafka topic and the PostgreSQL database simulatneously. Much like Apache Spark, Apache Flink runs with a distributed architecture utilizing Job Manager (Master) and Task Manager (Worker) nodes. In this project, I use two Task Manager slots, which run locally in separate docker containers.
+Apache Flink is responsible for processing the data sent to the Kafka topic and inserting into the PostgreSQL database. A Kafka source and a JDBC PostgreSQL sink are set up with their respective Jar connectors, allowing Flink to interact with the Kafka topic and the PostgreSQL database simulatneously. Much like Apache Spark, Apache Flink runs with a distributed architecture utilizing Job Manager (Master) and Task Manager (Worker) nodes. In this project, I use two Task Manager slots, allowing for parallel processing of the incoming clickstream data.
 
 ##### PostgreSQL Database
 My PostgreSQL setup utilizes the following schema.
@@ -65,6 +65,6 @@ My PostgreSQL setup utilizes the following schema.
 ##### Metabase Dashboard
 Additionally, I have created a Metabase dashboard which refreshes every minute, showing real-time analytics of the fake data stream. Unfortunately, Metabase dashboards aren't compatible with github because they are saved as database volumes. Regardless, I will share my screenshots here.
 
-![dashboard1](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/dashboard1.png)
+![dashboard1](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/dashboard1.png?raw=true)
 
-![dashboard2](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/dashboard2.png)
+![dashboard2](https://github.com/lderr4/Wikipedia-Clickstream-Data-Engineering/blob/main/assets/images/dashboard2.png?raw=true)

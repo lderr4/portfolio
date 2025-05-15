@@ -10,7 +10,7 @@ services:
       - "4321:4321"
     command: npm run dev
     env_file:
-      - .env  # Loads AWS credentials
+      - .env
 
   astro-build:
     image: node:lts

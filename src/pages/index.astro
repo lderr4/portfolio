@@ -16,11 +16,9 @@ import Pill from '../components/Pill.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 
 const projects = (await getCollection('projects'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 const blogs =  (await getCollection('blogs'))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-	.slice(0, 4);
+	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -31,9 +29,9 @@ const blogs =  (await getCollection('blogs'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Lucas Derr"
-					tagline="I am an aspiring data engineer and recent graduate from CU Boulder's Data Science M.S. and Computer Science B.S. programs. Check out some of the things I've been up to!"
-					align="start"
+					title="Lucas R Derr Insights"
+					tagline="I am a data professional and graduate from CU Boulder's Data Science M.S. and Computer Science B.S. programs. Check out some of my projects and blogs."
+					align="start" 
 				>
 					<div class="roles">
 						<Pill><Icon icon="handshake" size="1.33em" />Dedicated Professional</Pill>
