@@ -34,7 +34,7 @@ const blogs =  (await getCollection('blogs'))
 					align="start" 
 				>
 					<div class="roles">
-						<Pill><Icon icon="handshake" size="1.33em" />Dedicated Professional</Pill>
+						<Pill><Icon icon="handshake" size="1.33em" /> Dedicated Professional</Pill>
 						<Pill><Icon icon="puzzle" size="1.33em" /> Problem Solver</Pill>
 						<Pill><Icon icon="learner" size="1.33em" /> Lifelong Learner</Pill>
 					</div>
@@ -117,13 +117,13 @@ const blogs =  (await getCollection('blogs'))
 		.roles {
 			margin-top: 0.5rem;
 			display: flex;
+			gap: 0.4em;
 		}
 
 		@media (max-width: 50em) {
 		.roles {
 			display: flex;
 			flex-direction: column; /* Stack pills vertically on narrow screens */
-			gap: 1rem; /* Add gap between pills when stacked vertically */
 		}
 		.hero img {
 			aspect-ratio: 3 / 4;
